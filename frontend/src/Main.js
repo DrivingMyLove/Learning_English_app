@@ -5,19 +5,19 @@ import {
   initNewChatButton,        // Nút bắt đầu cuộc trò chuyện mới
   initSendMessage,          // Nút gửi tin nhắn
   initSpeechRecognition     // Tính năng ghi âm giọng nói và chuyển thành văn bản
-} from './Chat.js';
+} from './components/Chat.js';
 
 // Import các hàm khởi tạo từ module Vocab.js
 import {
   initPopupControls,        // Nút đóng popup từ vựng, nút nghe phát âm
   initVocabControls         // Xử lý danh sách từ đã tra: tìm kiếm, xoá, phát âm
-} from './Vocab.js';
+} from './components/Vocab.js';
 
 // Import các hàm từ module History.js
 import {
   initHistoryTab,           // Khi mở tab "Lịch sử", hiển thị danh sách hội thoại
   hideHistoryDetail         // Ẩn chi tiết, quay lại danh sách hội thoại
-} from './History.js';
+} from './components/History.js';
 
 
 //Hàm chính khởi chạy sau khi trang HTML đã tải xong toàn bộ
