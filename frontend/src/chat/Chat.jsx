@@ -10,9 +10,14 @@ const Chat = () => {
   const [typingIntervalId, setTypingIntervalId] = useState(null);
   const [typingIndicatorMessage, setTypingIndicatorMessage] =
     useState("Typing");
+  
   const EXPRESS_PORT = 3000; // Port that the Express server is running on
 
   const firstRender = useRef(true); // Using useRef to check the first render
+
+  
+
+  
 
   const displayUserMessage = (message) => {
     // Add the user's message to the chat messages
@@ -122,6 +127,7 @@ const Chat = () => {
         onKeyDown={handleKeyDown}
         placeholder='Type your message here...'
         onClick={sendMessage}
+        
       />
     </div>
   );
