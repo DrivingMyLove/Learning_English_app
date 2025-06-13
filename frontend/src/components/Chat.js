@@ -1,3 +1,6 @@
+import * as webllm from "@mlc-ai/web-llm";
+import { CreateMLCEngine } from "@mlc-ai/web-llm";
+
 //Hàm bật/tắt side trái
 export function initSidebarToggle() {
   document.getElementById("toggle-sidebar-btn")
@@ -66,10 +69,22 @@ function appendMessage(sender, text) {
 }
 
 //Mô phỏng phản hồi từ AL =>   CẦN CHỈNH SỬA ĐỂ GỌI API
-function sendToAI(message) {
+async function sendToAI(message) {
+  const res = await fetch("http://localhost:11434/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "phi",
+      messages: [{ role: "user", content: message }],
+      stream: false,
+    }),
+  });  
+  const data = await res.json();
+  const reply = data.message.content;
   appendMessage('bot', '...');
   setTimeout(() => {
-    const reply = `Bạn vừa nói: "${message}" – tuyệt đấy!`;
+    
+    // const reply = `Bạn vừa nói: "${message}" – tuyệt đấy!`;
     document.querySelector('.message.bot:last-child').remove();
     appendMessage('bot', reply);
     speak(reply);
